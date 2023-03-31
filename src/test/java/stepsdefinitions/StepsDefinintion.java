@@ -2,8 +2,13 @@ package stepsdefinitions;
 
 import static org.junit.Assert.assertEquals;
 
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.OutputType;
+
 import com.jsmj.cucumber1.calculator.Calculator;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 
 public class StepsDefinintion {
@@ -32,6 +37,16 @@ public class StepsDefinintion {
 		//assertEquals(value, this.result);
 		System.out.println("El valor es: "+value);
 		assertEquals(value, this.result);
+	}
+	
+	@After
+	public void after(Scenario scenario) {
+		//TakesScreenshot ts = (TakesScreenshot) driver;
+
+		//byte[] src = ts.getScreenshotAs(OutputType.BYTES);
+		//scenario.attach(src, "image/png", "screenshot");
+		
+		
 	}
 	
 
