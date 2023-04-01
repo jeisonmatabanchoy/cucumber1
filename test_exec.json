@@ -3,11 +3,11 @@
         "project": {
             "key": "DCP"
         },
+        "customfield_11251":{
+            "value": "TMO"
+        },
         "summary": "Test Execution for cucumber execution",
         "issuetype": {
             "name": "Test Execution"
-        },
-        "customfield_11251":{
-            "value": "TMO"
         }
 }
