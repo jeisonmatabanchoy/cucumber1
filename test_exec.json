@@ -4,11 +4,15 @@
             "key": "DCP"
         },
         "customfield_11251":{
-            "value": "TMO"
+            "value": "Laboratorio"
         },
         "summary": "Test Execution for cucumber execution",
         "issuetype": {
             "name": "Test Execution"
-        }
+        },
+		"xrayFields": {
+			"testPlanKey": "DCP-40",
+			"environments": ["QA"]
+		}
     }
 }
