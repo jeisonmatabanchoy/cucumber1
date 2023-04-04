@@ -9,10 +9,11 @@
         "summary": "Test Execution for cucumber execution",
         "issuetype": {
             "name": "Test Execution"
-        },
-		"xrayFields": {
-			"testPlanKey": "DCP-40",
-			"environments": ["QA"]
-		}
-    }
+        }
+	},
+	"xrayFields": {
+		"testPlanKey": "DCP-40",
+		"environments": ["QA"]
+	}
 }
+
