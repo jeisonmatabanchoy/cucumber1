@@ -42,7 +42,7 @@ jobs:
         cat report.json
     - name: Generate auxiliary JSON for Create Test Execution
       run: |
-      cat test_exec.json.sample | sed s/PROJECT_KEY/${{ github.event.client_payload.projectkey }}/g | sed s/WORK_TEAM/${{ github.event.client_payload.workteam }}/g | sed s/TEST_PLAN/${{ github.event.client_payload.testplan }}/g | sed s/ENVIRONMENT/${{ github.event.client_payload.environment }}/g > test_exec_jira.json
+        cat test_exec.json.sample | sed s/PROJECT_KEY/${{ github.event.client_payload.projectkey }}/g | sed s/WORK_TEAM/${{ github.event.client_payload.workteam }}/g | sed s/TEST_PLAN/${{ github.event.client_payload.testplan }}/g | sed s/ENVIRONMENT/${{ github.event.client_payload.environment }}/g > test_exec_jira.json
     - name: "Import results to Xray (cloud) using multipart endpoint"
       run: |
         cat test_exec.json
