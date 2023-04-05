@@ -34,7 +34,7 @@ jobs:
     - name: Export Xray cucumber feature
       run: |
         rm -rf xray/features/*
-        curl -H "Content-Type: application/json" -X GET -H "Authorization: Bearer ${{ env.token }}"  "${{ secrets.XRAYCLOUD_BASE_URL }}/api/v2/export/cucumber?keys=${{ github.event.client_payload.testkeys }}" --output xray/features.zip
+        curl -H "Content-Type: application/json" -X GET -H "Authorization: Bearer ${{ env.token }}"  "${{ secrets.XRAYCLOUD_BASE_URL }}/api/v2/export/cucumber?filter=${{ github.event.client_payload.testkeys }}" --output xray/features.zip
         unzip xray/features.zip -d xray/features
     - name: Run tests
       run: |
