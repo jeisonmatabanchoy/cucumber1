@@ -32,10 +32,15 @@ public class StepsDefinintion {
 	    this.result = Calculator.Multiply(this.int1, this.int2);
 	}
 	
+	@When("I press divide")
+	public void i_press_divide() {
+	    this.result = Calculator.Divide(this.int1, this.int2);
+	}
+	
 	@Then("the result should be {int} on the screen")
 	public void the_result_should_be_on_the_screen(Integer value) {
 		//assertEquals(value, this.result);
-		System.out.println("El valor es: "+value);
+		System.out.println("El valor es: "+this.result);
 		assertEquals(value, this.result);
 	}
 	
