@@ -1,0 +1,19 @@
+{
+    "fields": {
+        "project": {
+            "key": "PROJECT_KEY"
+        },
+        "customfield_11251":{
+            "value": "WORK_TEAM"
+        },
+        "summary": "Test Execution for cucumber execution",
+        "issuetype": {
+            "name": "Test Execution"
+        }
+	},
+	"xrayFields": {
+		"testPlanKey": "TEST_PLAN",
+		"environments": ["ENVIRONMENT"]
+	}
+}
+

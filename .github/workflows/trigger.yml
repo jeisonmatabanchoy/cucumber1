@@ -29,7 +29,7 @@ jobs:
       run: mvn clean compile -B package --file pom.xml 
     - name: generate auxiliary JSON for authenticating with Xray cloud and obtain token
       run: |
-        cat cloud_auth.json.sample  | sed s/CLIENT_ID/${{ github.event.client_payload.clientId }}/g | sed s/CLIENT_SECRET/${{ github.event.client_payload.clientSecret }}/g > cloud_auth.json
+        cat cloud_auth.json.sample  | sed s/CLIENT_ID/${{ secrets.XRAYCLOUD_CLIENT_ID }}/g | sed s/CLIENT_SECRET/${{ secrets.XRAYCLOUD_CLIENT_SECRET }}/g > cloud_auth.json
         echo token=$(curl -H "Content-Type: application/json" -X POST --data @"cloud_auth.json" ${{ secrets.XRAYCLOUD_BASE_URL }}/api/v1/authenticate| tr -d '"') >> $GITHUB_ENV
     - name: Export Xray cucumber feature
       run: |
@@ -40,8 +40,10 @@ jobs:
       run: |
         mvn test -Dcucumber.plugin="json:report.json" -Dcucumber.features="xray/features/"
         cat report.json
-    
+    - name: Generate auxiliary JSON for Create Test Execution
+      run: |
+      cat test_exec.json.sample | sed s/PROJECT_KEY/${{ github.event.client_payload.projectkey }}/g | sed s/WORK_TEAM/${{ github.event.client_payload.workteam }}/g | sed s/TEST_PLAN/${{ github.event.client_payload.testplan }}/g | sed s/ENVIRONMENT/${{ github.event.client_payload.environment }}/g > test_exec_jira.json
     - name: "Import results to Xray (cloud) using multipart endpoint"
       run: |
         cat test_exec.json
-        curl -X POST -H "Authorization: Bearer ${{ env.token }}" -F info=@test_exec.json -F results=@"report.json" "${{ secrets.XRAYCLOUD_BASE_URL }}/api/v1/import/execution/cucumber/multipart"
+        curl -X POST -H "Authorization: Bearer ${{ env.token }}" -F info=@test_exec_jira.json -F results=@"report.json" "${{ secrets.XRAYCLOUD_BASE_URL }}/api/v1/import/execution/cucumber/multipart"
