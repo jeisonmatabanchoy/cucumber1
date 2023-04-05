@@ -31,10 +31,11 @@ jobs:
       run: |
         cat cloud_auth.json.sample  | sed s/CLIENT_ID/${{ github.event.client_payload.clientId }}/g | sed s/CLIENT_SECRET/${{ github.event.client_payload.clientSecret }}/g > cloud_auth.json
         echo token=$(curl -H "Content-Type: application/json" -X POST --data @"cloud_auth.json" ${{ secrets.XRAYCLOUD_BASE_URL }}/api/v1/authenticate| tr -d '"') >> $GITHUB_ENV
-    - name: Get Xray cucumber feature
+    - name: Export Xray cucumber feature
       run: |
         rm -rf xray/features/*
-        curl -H "Content-Type: application/json" -X GET -H "Authorization: Bearer ${{ env.token }}"  "${{ secrets.XRAYCLOUD_BASE_URL }}/api/v2/export/cucumber?keys=${{ github.event.client_payload.testkeys }}"
+        curl -H "Content-Type: application/json" -X GET -H "Authorization: Bearer ${{ env.token }}"  "${{ secrets.XRAYCLOUD_BASE_URL }}/api/v2/export/cucumber?keys=${{ github.event.client_payload.testkeys }} --output xray/features.zip"
+        unzip xray/features.zip -f xray/features
     - name: Run tests
       run: |
         mvn test -Dcucumber.plugin="json:report.json" -Dcucumber.features="xray/features/"
