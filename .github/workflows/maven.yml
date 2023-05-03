@@ -9,7 +9,7 @@
 name: Java CI with Maven
 
 on:
-  repository_dispatch:
+  workflow_dispatch:
     types: [main]
 
 jobs:
