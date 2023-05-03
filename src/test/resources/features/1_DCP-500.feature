@@ -1,7 +1,6 @@
-@DCP-537
 Feature: simple integer addition
 
-	@TEST_DCP-500
+	@TEST_JSC-22
 	Scenario: simple integer addition
 		Given I have entered 1 into the calculator
 		And I have entered 2 into the calculator
