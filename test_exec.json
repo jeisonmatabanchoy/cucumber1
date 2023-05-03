@@ -12,7 +12,7 @@
         }
 	},
 	"xrayFields": {
-		"testPlanKey": "JSC-16",
+		"testPlanKey": "JSC-14",
 		"environments": ["QA"]
 	}
 }
