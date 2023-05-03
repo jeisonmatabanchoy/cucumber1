@@ -1,9 +1,9 @@
 {
     "fields": {
         "project": {
-            "key": "DCP"
+            "key": "JSC"
         },
-        "customfield_11251":{
+        "customfield_10038":{
             "value": "Laboratorio"
         },
         "summary": "Test Execution for cucumber execution",
@@ -12,7 +12,7 @@
         }
 	},
 	"xrayFields": {
-		"testPlanKey": "DCP-40",
+		"testPlanKey": "JSC-16",
 		"environments": ["QA"]
 	}
 }
